@@ -63,23 +63,7 @@ public class TextToImage {
         // TODO: 4. Get `data`.`url` via ObjectMapper (`mapper.readTree(response)`)
         // TODO: 5. Return Image url or null
 
-        String requestBody = generateRequestBody(prompt);
-
-        String response = OpenAIUtils.call(
-                "https://api.openai.com/v1/images/generations",
-                "application/json",
-                HttpRequest.BodyPublishers.ofString(requestBody)
-        );
-
-        if (response != null) {
-            JsonNode jsonResponse = mapper.readTree(response);
-            JsonNode dataNode = jsonResponse.get("data");
-            if (dataNode != null && dataNode.isArray() && !dataNode.isEmpty()) {
-                return dataNode.get(0).get("url").asText();
-            }
-        }
-
-        return null;
+        throw new RuntimeException("Not implemented yet");
     }
 
     /**
@@ -102,13 +86,8 @@ public class TextToImage {
         //TODO:     - prompt: provided prompt
         //TODO:     - n: 1 (we need only one image)
         //TODO:     - size: size (image size)
-        return mapper.writeValueAsString(
-                Map.of(
-                        "model", Model.DALL_E_3.getValue(),
-                        "prompt", prompt,
-                        "n", 1,
-                        "size", "1024x1024"
-                ));
+
+        throw new RuntimeException("Not implemented yet");
     }
 
 

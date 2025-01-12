@@ -24,6 +24,7 @@ public class TextToAudio {
     private static final HttpClient httpClient = HttpClient.newHttpClient();
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        // NO need to change smth. This `main` method just to test how it works
         String outputAudioPath = UUID.randomUUID() + ".mp3";
 
         new TextToAudio().generateAudioFromText(USER_PROMPT, outputAudioPath);
@@ -53,25 +54,7 @@ public class TextToAudio {
         //TODO: 3. Check if response successful (is 200)
         //TODO: 4. Save body to file (use method `saveAudioToFile`)
 
-        String requestBody = mapper.writeValueAsString(
-                Map.of(
-                        "model", Model.TTS_1.getValue(),
-                        "input", prompt,
-                        "voice", "alloy"
-                )
-        );
-
-        HttpResponse<byte[]> httpResponse = call(
-                "https://api.openai.com/v1/audio/speech",
-                HttpRequest.BodyPublishers.ofString(requestBody)
-        );
-
-        if (httpResponse.statusCode() == 200) {
-            saveAudioToFile(httpResponse.body(), fileName);
-            System.out.println("Audio generated and saved to: " + fileName);
-        } else {
-            System.err.println("Error generating audio: " + new String(httpResponse.body()));
-        }
+        throw new RuntimeException("Not implemented yet");
     }
 
     /**
@@ -92,17 +75,11 @@ public class TextToAudio {
         // TODO: 2. Send request (it is sync, we will wait till LLM fully generates response)
         // TODO: 2.1. Use `HttpResponse.BodyHandlers.ofByteArray()` to collect content
 
-        HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .header("Authorization", "Bearer " + Constant.API_KEY)
-                .header("Content-Type", "application/json")
-                .POST(bodyPublisher)
-                .build();
-
-        return httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofByteArray());
+        throw new RuntimeException("Not implemented yet");
     }
 
     private static void saveAudioToFile(byte[] audioData, String fileName) throws IOException {
+        // NO need to change smth
         try (FileOutputStream fos = new FileOutputStream("src/main/resources/audio/" + fileName)) {
             fos.write(audioData);
         }

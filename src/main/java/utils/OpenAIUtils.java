@@ -32,13 +32,6 @@ public final class OpenAIUtils {
         // TODO: 2.1. Use `HttpResponse.BodyHandlers.ofString()` to collect content
         // TODO: 3. return response body
 
-        HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .header("Authorization", "Bearer " + Constant.API_KEY)
-                .header("Content-Type", contentType)
-                .POST(bodyPublisher)
-                .build();
-
-        return httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString()).body();
+        throw new RuntimeException("Not implemented yet");
     }
 }

@@ -44,12 +44,7 @@ public class ImageToText {
         // TODO:        - content type:  application/json
         // TODO:        - requestBody:  convert json node to string via `writeValueAsString()` and use `HttpRequest.BodyPublishers.ofString(...)`
 
-        ObjectNode request = collectRequestNode(messages);
-        return OpenAIUtils.call(
-                Constant.BASE_OPEN_AI_URL + "/chat/completions",
-                "application/json",
-                HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(request))
-        );
+        throw new RuntimeException("Not implemented yet");
     }
 
     public String getContent(String llmResponse) throws JsonProcessingException {
@@ -58,14 +53,7 @@ public class ImageToText {
         // TODO: 3. If it instance of String then return it
         // TODO: 4. return `null` by default
 
-        ChatCompletion chatCompletion = mapper.readValue(llmResponse, ChatCompletion.class);
-
-        Object content = chatCompletion.choices().getFirst().message().content();
-        if (content instanceof String strContent) {
-            return strContent;
-        }
-
-        return null;
+        throw new RuntimeException("Not implemented yet");
     }
 
     private static ObjectNode collectRequestNode(List<Message> messages) {
@@ -73,10 +61,7 @@ public class ImageToText {
         // TODO: 2. PUT `model`, I would recommend GPT-4o
         // TODO: 3. SET `messages`, (use ObjectMapper to convert them to Tree)
 
-        ObjectNode request = mapper.createObjectNode();
-        request.put("model", Model.GPT_4o.getValue());
-        request.set("messages", mapper.valueToTree(messages));
-        return request;
+        throw new RuntimeException("Not implemented yet");
     }
 
     /**
@@ -112,17 +97,7 @@ public class ImageToText {
         //hint: DTOs have been already created, see TxtContent and ImgContent
         //hint: also you can test with link to picture instead of Base64 format
 
-        return List.of(
-                new Message(
-                        Role.USER,
-                        List.of(
-                                new TxtContent(USER_PROMPT),
-                                new ImgContent(
-                                        String.format("data:image/jpeg;base64, %s", Base64.getEncoder().encodeToString(imageBytes))
-                                )
-                        )
-                )
-        );
+        throw new RuntimeException("Not implemented yet");
     }
 
     private static byte[] getPicture() throws IOException {

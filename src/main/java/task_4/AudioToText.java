@@ -25,17 +25,7 @@ public class AudioToText {
         // TODO:        - requestBody: `HttpRequest.BodyPublishers.ofByteArray(requestBody)`
         // TODO: 3. return LLM response
 
-        String boundary = "----OpenAIMultipartBoundary";
-        ClassLoader classLoader = AudioToText.class.getClassLoader();
-        File audioFile = new File(classLoader.getResource("codeus_audio.mp3").getFile());
-
-        byte[] requestBody = buildMultipartBody(boundary, audioFile);
-
-        return OpenAIUtils.call(
-                "https://api.openai.com/v1/audio/transcriptions",
-                "multipart/form-data; boundary=" + boundary,
-                HttpRequest.BodyPublishers.ofByteArray(requestBody)
-        );
+        throw new RuntimeException("Not implemented yet");
     }
 
 

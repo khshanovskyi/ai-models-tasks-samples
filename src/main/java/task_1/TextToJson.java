@@ -140,19 +140,8 @@ public class TextToJson {
         // TODO:        - url:  https://api.openai.com/v1/chat/completions
         // TODO:        - content type:  application/json
         // TODO:        - requestBody:  convert json node to string via `writeValueAsString()` and use `HttpRequest.BodyPublishers.ofString(...)`
-        JsonNode invoiceSchema = generateUsersJsonSchema();
-        ResponseFormat responseFormat = new ResponseFormat(
-                Type.JSON_SCHEMA,
-                new JsonSchema("userSchema", invoiceSchema)
-        );
 
-        ObjectNode request = collectRequestNode(messages, responseFormat);
-
-        return OpenAIUtils.call(
-                Constant.BASE_OPEN_AI_URL + "/chat/completions",
-                "application/json",
-                HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(request))
-        );
+        throw new RuntimeException("Not implemented yet");
     }
 
     private ObjectNode collectRequestNode(List<Message> messages, ResponseFormat responseFormat) {
@@ -161,11 +150,7 @@ public class TextToJson {
         // TODO: 3. SET `messages`, (use ObjectMapper to convert them to Tree)
         // TODO: 4. SET `response_format`, (use ObjectMapper to convert it to Tree)
 
-        ObjectNode request = mapper.createObjectNode();
-        request.put("model", Model.GPT_4o.getValue());
-        request.set("messages", mapper.valueToTree(messages));
-        request.set("response_format", mapper.valueToTree(responseFormat));
-        return request;
+        throw new RuntimeException("Not implemented yet");
     }
 
     public Users getUsersFromLLMResponse(String llmResponse) throws JsonProcessingException {
@@ -174,27 +159,14 @@ public class TextToJson {
         // TODO: 3. If it instance of String and starts with '{' and ends with '}', then map it `Users`
         // TODO: 4. return `null` by default
 
-        Users users = null;
-        ChatCompletion chatCompletion = mapper.readValue(llmResponse, ChatCompletion.class);
-
-        Object content = chatCompletion.choices().getFirst().message().content();
-        if (content instanceof String strContent) {
-            if (strContent.startsWith("{") && strContent.endsWith("}")) {
-                users =  mapper.readValue(strContent, Users.class);
-            }
-        }
-
-        return users;
+        throw new RuntimeException("Not implemented yet");
     }
 
     /**
      * Provides list of {@link Message}. First message with SYSTEM_PROMPT, second with USER_PROMPT.
      */
     private static List<Message> getMessages() {
-        return List.of(
-                new Message(Role.SYSTEM, List.of(new TxtContent(SYSTEM_PROMPT))),
-                new Message(Role.USER, List.of(new TxtContent(USER_PROMPT)))
-        );
+        throw new RuntimeException("Not implemented yet");
     }
 
     private JsonNode generateUsersJsonSchema() {
@@ -202,15 +174,7 @@ public class TextToJson {
         // TODO: https://github.com/victools/jsonschema-generator
         // TODO: If you scroll documentation to down of victools, it will provide you with example how to do that
 
-        SchemaGeneratorConfigBuilder configBuilder = new SchemaGeneratorConfigBuilder(
-                SchemaVersion.DRAFT_2020_12,
-                OptionPreset.PLAIN_JSON
-        );
-        SchemaGeneratorConfig config = configBuilder.build();
-        SchemaGenerator generator = new SchemaGenerator(config);
-
-
-        return generator.generateSchema(Users.class);
+        throw new RuntimeException("Not implemented yet");
     }
 
 }
