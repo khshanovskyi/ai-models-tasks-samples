@@ -1,26 +1,11 @@
-curl https://api.openai.com/v1/chat/completions \
+curl https://api.openai.com/v1/images/generations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-4o-mini",
-    "messages": [
-      {
-        "role": "user",
-        "content": [
-          {
-            "type": "text",
-            "text": "What is in this image?"
-          },
-          {
-            "type": "image_url",
-            "image_url": {
-              "url": "data:image/jpeg;base64,<base64_image>"
-            }
-          }
-        ]
-      }
-    ],
-    "max_tokens": 300
+    "model": "dall-e-3",
+    "prompt": "a white siamese cat",
+    "n": 1,
+    "size": "1024x1024"
   }'
 
-Link: https://platform.openai.com/docs/guides/vision
+Link: https://platform.openai.com/docs/guides/images

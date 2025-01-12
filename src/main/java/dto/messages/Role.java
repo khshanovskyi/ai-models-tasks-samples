@@ -1,4 +1,4 @@
-package dto;
+package dto.messages;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

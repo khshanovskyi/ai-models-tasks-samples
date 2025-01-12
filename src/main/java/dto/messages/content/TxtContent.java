@@ -1,4 +1,4 @@
-package dto;
+package dto.messages.content;
 
 public class TxtContent extends Content {
 

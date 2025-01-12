@@ -1,4 +1,4 @@
-package dto;
+package dto.messages.content;
 
 public abstract class Content {
     protected Type type;

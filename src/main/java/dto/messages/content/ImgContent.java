@@ -1,4 +1,4 @@
-package dto;
+package dto.messages.content;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

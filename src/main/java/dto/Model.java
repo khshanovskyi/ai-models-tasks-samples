@@ -5,6 +5,7 @@ public enum Model {
     GPT_4o_MINI("gpt-4o-mini"),
     GPT_4o("gpt-4o"),
     DALL_E_3("dall-e-3"),
+    WHISPER_1("whisper-1"),
     TTS_1("tts-1");
 
     private final String value;

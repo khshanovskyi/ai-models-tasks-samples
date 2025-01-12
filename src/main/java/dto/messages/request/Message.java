@@ -1,5 +1,6 @@
-package dto.messages;
+package dto.messages.request;
 
+import dto.messages.Role;
 import dto.messages.content.Content;
 
 import java.util.List;

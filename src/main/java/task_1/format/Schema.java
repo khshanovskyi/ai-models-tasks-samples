@@ -1,4 +1,4 @@
-package dto.messages.response.format;
+package task_1.format;
 
 public record Schema (String type){
 }

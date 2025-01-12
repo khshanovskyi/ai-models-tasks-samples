@@ -2,33 +2,25 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-4o-2024-08-06",
+    "model": "gpt-4o-mini",
     "messages": [
       {
-        "role": "developer",
-        "content": "You extract email addresses into JSON data."
-      },
-      {
         "role": "user",
-        "content": "Feeling stuck? Send a message to help@mycompany.com."
+        "content": [
+          {
+            "type": "text",
+            "text": "What is in this image?"
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "data:image/jpeg;base64,<base64_image>"
+            }
+          }
+        ]
       }
     ],
-    "response_format": {
-      "type": "json_schema",
-      "json_schema": {
-        "name": "email_schema",
-        "schema": {
-            "type": "object",
-            "properties": {
-                "email": {
-                    "description": "The email address that appears in the input",
-                    "type": "string"
-                }
-            },
-            "additionalProperties": false
-        }
-      }
-    }
+    "max_tokens": 300
   }'
 
-Link: https://platform.openai.com/docs/guides/text-generation?text-generation-quickstart-example=json
+Link: https://platform.openai.com/docs/guides/vision

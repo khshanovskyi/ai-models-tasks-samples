@@ -1,8 +1,13 @@
 package dto.messages.response.ai;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Choice(
         int index,
-        ChatCompletion.Message message,
+        Message message,
         Object logprobs,
+        @JsonProperty("finish_reason")
         String finishReason
 ) {}

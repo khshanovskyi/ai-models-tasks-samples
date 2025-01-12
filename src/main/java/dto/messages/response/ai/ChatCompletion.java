@@ -1,7 +1,11 @@
 package dto.messages.response.ai;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record ChatCompletion(
         String id,
         String object,
@@ -9,41 +13,11 @@ public record ChatCompletion(
         String model,
         List<Choice> choices,
         Usage usage,
+        @JsonProperty("service_tier")
         String serviceTier,
+        @JsonProperty("system_fingerprint")
         String systemFingerprint
 ) {
 
-    public record Message(
-            String role,
-            String content,
-            Object refusal
-    ) {}
-
-    public record Usage(
-            int promptTokens,
-            int completionTokens,
-            int totalTokens,
-            TokenDetails promptTokensDetails,
-            TokenDetails completionTokensDetails
-    ) {}
-
-    public record TokenDetails(
-            int cachedTokens,
-            int audioTokens,
-            int reasoningTokens,
-            int acceptedPredictionTokens,
-            int rejectedPredictionTokens
-    ) {}
-
-    public record Content(
-            List<Person> persons
-    ) {}
-
-    public record Person(
-            String name,
-            String surname,
-            int age,
-            List<String> hobbies
-    ) {}
 }
 

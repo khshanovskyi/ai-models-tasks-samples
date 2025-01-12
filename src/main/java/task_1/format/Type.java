@@ -1,4 +1,4 @@
-package dto.messages.response.format;
+package task_1.format;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

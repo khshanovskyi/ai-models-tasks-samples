@@ -1,4 +1,4 @@
-package v1.dto;
+package dto;
 
 public class Conversation {
 }

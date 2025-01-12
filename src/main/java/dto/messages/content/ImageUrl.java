@@ -1,4 +1,4 @@
 package dto.messages.content;
 
-public class ImageUrl {
+public record ImageUrl(String url) {
 }
