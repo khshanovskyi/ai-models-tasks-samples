@@ -1,0 +1,35 @@
+{
+  "id": "chatcmpl-AopkAdFosCsN9QewKWIIjnCEm5gme",
+  "object": "chat.completion",
+  "created": 1736678666,
+  "model": "gpt-4o-2024-08-06",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"persons\":[{\"name\":\"John\",\"surname\":\"Smith\",\"age\":34,\"hobbies\":[\"Fishing\",\"woodworking\",\"hiking\"]},{\"name\":\"Emily\",\"surname\":\"Peterson\",\"age\":27,\"hobbies\":[\"Photography\",\"painting\",\"volunteering at animal shelters\"]},{\"name\":\"Michael\",\"surname\":\"Johnson\",\"age\":42,\"hobbies\":[\"Gardening\",\"playing chess\",\"marathon running\"]},{\"name\":\"Sophia\",\"surname\":\"Hernandez\",\"age\":29,\"hobbies\":[\"Baking\",\"yoga\",\"blogging about travel\"]},{\"name\":\"David\",\"surname\":\"Lee\",\"age\":36,\"hobbies\":[\"Reading\",\"cycling\",\"bird watching\"]}]}",
+        "refusal": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 472,
+    "completion_tokens": 137,
+    "total_tokens": 609,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": "fp_703d4ff298"
+}
