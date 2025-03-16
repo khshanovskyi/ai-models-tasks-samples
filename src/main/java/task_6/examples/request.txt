@@ -1,0 +1,25 @@
+curl "https://api.openai.com/v1/chat/completions" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+      "model": "gpt-4o-audio-preview",
+      "modalities": ["text", "audio"],
+      "audio": { "voice": "alloy", "format": "wav" },
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            { "type": "text", "text": "What is in this recording?" },
+            {
+              "type": "input_audio",
+              "input_audio": {
+                "data": "<base64 bytes here>",
+                "format": "wav"
+              }
+            }
+          ]
+        }
+      ]
+    }'
+
+Link: https://platform.openai.com/docs/guides/audio?example=audio-in
