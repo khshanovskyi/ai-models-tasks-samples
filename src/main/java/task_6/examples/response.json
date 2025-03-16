@@ -1,0 +1,15 @@
+{
+  "index": 0,
+  "message": {
+    "role": "assistant",
+    "content": null,
+    "refusal": null,
+    "audio": {
+      "id": "audio_abc123",
+      "expires_at": 1729018505,
+      "data": "<bytes omitted>",
+      "transcript": "Yes, golden retrievers are known to be ..."
+    }
+  },
+  "finish_reason": "stop"
+}

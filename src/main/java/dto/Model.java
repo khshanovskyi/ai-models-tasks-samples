@@ -6,7 +6,8 @@ public enum Model {
     GPT_4o("gpt-4o"),
     DALL_E_3("dall-e-3"),
     WHISPER_1("whisper-1"),
-    TTS_1("tts-1");
+    TTS_1("tts-1"),
+    GPT_4o_AUDIO_PREVIEW("gpt-4o-audio-preview");
 
     private final String value;
 
