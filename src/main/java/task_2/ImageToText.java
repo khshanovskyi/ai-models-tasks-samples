@@ -45,6 +45,8 @@ public class ImageToText {
         // TODO:        - requestBody:  convert json node to string via `writeValueAsString()` and use `HttpRequest.BodyPublishers.ofString(...)`
 
         ObjectNode request = collectRequestNode(messages);
+        System.out.println("Request: \n" + mapper.writerWithDefaultPrettyPrinter().writeValueAsString(request));
+        System.out.println();
         return OpenAIUtils.call(
                 Constant.BASE_OPEN_AI_URL + "/chat/completions",
                 "application/json",
