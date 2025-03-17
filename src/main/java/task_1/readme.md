@@ -15,7 +15,7 @@ curl https://api.openai.com/v1/chat/completions \
     "model": "gpt-4o-2024-08-06",
     "messages": [
       {
-        "role": "developer",
+        "role": "system",
         "content": "You extract email addresses into JSON data."
       },
       {
