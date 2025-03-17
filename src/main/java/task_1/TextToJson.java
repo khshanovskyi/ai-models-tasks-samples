@@ -133,13 +133,6 @@ public class TextToJson {
      * @return full LLM response JSON
      */
     public String callLLM(List<Message> messages) throws IOException, InterruptedException {
-        // TODO: 1. Generate JSON schema of the Users.class (implement method `generateUsersJsonSchema()`)
-        // TODO: 2. Prepare ResponseFormat (as an name for schema use `userSchema`)
-        // TODO: 3. Prepare ObjectNode request body (with messages and ResponseFormat) (implement method `collectRequestNode()`)
-        // TODO: 4. Call OpenAIUtils.call(...)
-        // TODO:        - url:  https://api.openai.com/v1/chat/completions
-        // TODO:        - content type:  application/json
-        // TODO:        - requestBody:  convert json node to string via `writeValueAsString()` and use `HttpRequest.BodyPublishers.ofString(...)`
         JsonNode usersJsonSchema = generateUsersJsonSchema();
         ResponseFormat responseFormat = new ResponseFormat(
                 Type.JSON_SCHEMA,
@@ -147,6 +140,9 @@ public class TextToJson {
         );
 
         ObjectNode request = collectRequestNode(messages, responseFormat);
+
+        System.out.println("Request: \n" +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(request));
+        System.out.println();
 
         return OpenAIUtils.call(
                 Constant.BASE_OPEN_AI_URL + "/chat/completions",
@@ -156,11 +152,6 @@ public class TextToJson {
     }
 
     private ObjectNode collectRequestNode(List<Message> messages, ResponseFormat responseFormat) {
-        // TODO: 1. Create instance of ObjectNode from ObjectMapper `mapper.createObjectNode()`
-        // TODO: 2. PUT `model`, I would recommend GPT-4o
-        // TODO: 3. SET `messages`, (use ObjectMapper to convert them to Tree)
-        // TODO: 4. SET `response_format`, (use ObjectMapper to convert it to Tree)
-
         ObjectNode request = mapper.createObjectNode();
         request.put("model", Model.GPT_4o_MINI.getValue());
         request.set("messages", mapper.valueToTree(messages));
@@ -169,22 +160,14 @@ public class TextToJson {
     }
 
     public Users getUsersFromLLMResponse(String llmResponse) throws JsonProcessingException {
-        // TODO: 1. Map value from `llmResponse` to ChatCompletion `mapper.readValue(llmResponse, ChatCompletion.class)`
-        // TODO: 2. Get its `content`
-        // TODO: 3. If it instance of String and starts with '{' and ends with '}', then map it `Users`
-        // TODO: 4. return `null` by default
-
-        Users users = null;
         ChatCompletion chatCompletion = mapper.readValue(llmResponse, ChatCompletion.class);
-
         Object content = chatCompletion.choices().getFirst().message().content();
         if (content instanceof String strContent) {
             if (strContent.startsWith("{") && strContent.endsWith("}")) {
-                users =  mapper.readValue(strContent, Users.class);
+                return mapper.readValue(strContent, Users.class);
             }
         }
-
-        return users;
+        return null;
     }
 
     /**
@@ -198,18 +181,9 @@ public class TextToJson {
     }
 
     private JsonNode generateUsersJsonSchema() {
-        // TODO: Get Json Schema of `Users.class`
-        // TODO: https://github.com/victools/jsonschema-generator
-        // TODO: If you scroll documentation to down of victools, it will provide you with example how to do that
-
-        SchemaGeneratorConfigBuilder configBuilder = new SchemaGeneratorConfigBuilder(
-                SchemaVersion.DRAFT_2020_12,
-                OptionPreset.PLAIN_JSON
-        );
+        SchemaGeneratorConfigBuilder configBuilder = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_2020_12, OptionPreset.PLAIN_JSON);
         SchemaGeneratorConfig config = configBuilder.build();
         SchemaGenerator generator = new SchemaGenerator(config);
-
-
         return generator.generateSchema(Users.class);
     }
 
