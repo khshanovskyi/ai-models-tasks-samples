@@ -140,10 +140,10 @@ public class TextToJson {
         // TODO:        - url:  https://api.openai.com/v1/chat/completions
         // TODO:        - content type:  application/json
         // TODO:        - requestBody:  convert json node to string via `writeValueAsString()` and use `HttpRequest.BodyPublishers.ofString(...)`
-        JsonNode invoiceSchema = generateUsersJsonSchema();
+        JsonNode usersJsonSchema = generateUsersJsonSchema();
         ResponseFormat responseFormat = new ResponseFormat(
                 Type.JSON_SCHEMA,
-                new JsonSchema("userSchema", invoiceSchema)
+                new JsonSchema("userSchema", usersJsonSchema)
         );
 
         ObjectNode request = collectRequestNode(messages, responseFormat);
@@ -162,7 +162,7 @@ public class TextToJson {
         // TODO: 4. SET `response_format`, (use ObjectMapper to convert it to Tree)
 
         ObjectNode request = mapper.createObjectNode();
-        request.put("model", Model.GPT_4o.getValue());
+        request.put("model", Model.GPT_4o_MINI.getValue());
         request.set("messages", mapper.valueToTree(messages));
         request.set("response_format", mapper.valueToTree(responseFormat));
         return request;

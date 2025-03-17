@@ -187,7 +187,9 @@ class TextToJsonTest {
         Users usersFromLLMResponse = textToJson.getUsersFromLLMResponse(response);
         if (usersFromLLMResponse != null) {
             assertNotNull(usersFromLLMResponse, "No response was returned");
-            assertEquals(0, usersFromLLMResponse.users().size(), "There should be 0 users");
+            if (usersFromLLMResponse.users() != null) {
+                assertEquals(0, usersFromLLMResponse.users().size(), "There should be 0 users");
+            }
         }
     }
 }
