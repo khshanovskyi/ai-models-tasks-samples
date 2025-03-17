@@ -102,7 +102,7 @@ public class TextToJson {
      *     "model": "gpt-4o-2024-08-06",
      *     "messages": [
      *       {
-     *         "role": "developer",
+     *         "role": "system",
      *         "content": "You extract email addresses into JSON data."
      *       },
      *       {
